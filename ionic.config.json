@@ -1,0 +1,7 @@
+{
+  "name": "jpmsIonic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

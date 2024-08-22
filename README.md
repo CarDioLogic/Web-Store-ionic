@@ -15,15 +15,13 @@ Simple webstore app made as part of the [ATEC's TPSIP curriculum](https://www.at
 - JSON-server
 
 ## Screenshots
-### Homepage
+### Menu
 ![Menu](https://github.com/CarDioLogic/Web-Store-ionic/blob/master/screenshots/Menu.PNG)
-### User profile
+### About
 ![About](https://github.com/CarDioLogic/Web-Store-ionic/blob/master/screenshots/About.PNG)
-### Games list
+### Manage Products
 ![Manage Products](https://github.com/CarDioLogic/Web-Store-ionic/blob/master/screenshots/Manage.PNG)
-### Game details
-![Game details](https://github.com/CarDioLogic/MyGamingJournalR/blob/master/screenshots/gameDetails.PNG)
-### User games list
+### Cart
 ![Cart](https://github.com/CarDioLogic/Web-Store-ionic/blob/master/screenshots/Cart.PNG)
 
 ## Author:

@@ -1,3 +1,38 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu contentId="main-content">
+    <app-main-menu></app-main-menu>
+  </ion-menu>
+
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-item class="">
+        <ion-icon name="logo-xbox"></ion-icon>
+        <ion-title>XhoColates</ion-title>
+      </ion-item>
+
+      <ion-buttons slot="end">
+        <ion-button id="cart-modal" expand="block">
+          <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
+          @if (cartItemCount > 0) {
+            <ion-badge class="notification-badge">{{ cartItemCount }}</ion-badge>
+          }
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content id="main-content">
+    <ion-modal
+    trigger="cart-modal"
+    [enterAnimation]="enterAnimation"
+    [leaveAnimation]="leaveAnimation"
+  >
+    <ng-template>
+      <app-shopping-cart />
+    </ng-template>
+  </ion-modal>
+    <ion-router-outlet></ion-router-outlet>
+  </ion-content>
 </ion-app>

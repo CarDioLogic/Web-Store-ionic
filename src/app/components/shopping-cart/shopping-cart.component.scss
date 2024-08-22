@@ -1,0 +1,74 @@
+:host {
+  height: 100%;
+}
+
+ion-card {
+  display: flex;
+}
+
+ion-img {
+  width: 64px;
+  height: 64px;
+}
+
+ion-card-content {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-quantity {
+  display: flex;
+
+  > input,
+  > button {
+    width: 25px;
+    border: 1px solid var(--ion-text-color);
+    color: var(--ion-text-color);
+  }
+
+  > button {
+    transition: transform 200ms;
+  }
+
+  > button:first-child {
+    border-radius: 5px 0 0 5px;
+  }
+
+  > button:last-child {
+    border-radius: 0 5px 5px 0;
+  }
+
+  > button:active {
+    transform: scale(1.1);
+  }
+
+  > label {
+    display: none;
+  }
+
+  > input {
+    border-right: 0;
+    border-left: 0;
+    text-align: center;
+    padding: 2px 0 2px 0;
+  }
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+ion-button {
+  text-align: center;
+}
+
+.txtGreen {
+  color: green;
+}
+.oldPrice {
+  text-decoration: line-through;
+  font-style: italic;
+  font-size: 0.8em;
+}

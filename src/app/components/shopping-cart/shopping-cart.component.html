@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>O meu carrinho:</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <div *ngIf="!isDonePurchasing">
+      <ng-container *ngFor="let item of cart;">
+        <ion-card>
+          <ion-img [src]="item.product.image"></ion-img>
+          <ion-card-content>
+            <div class="flexCol">
+              <b>{{ item.product.name }}</b>
+              <b>{{ calculateTotalPricePerItem(item.product.price, item.quantity) }}€</b>
+            </div>
+            <div class="input-quantity">
+              <button type="button" (click)="inputQuantityMinusClick(item)">-</button>
+              <label for="quantity-{{ item.product.id }}">Quantidade:</label>
+              <input
+                type="number"
+                id="quantity-{{ item.product.id }}"
+                [value]="item.quantity"
+                (blur)="inputQuantityValueBlur($event, item)"
+              />
+              <button type="button" (click)="inputQuantityPlusClick(item)">+</button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ng-container>
+      <ng-container *ngIf="cart.length === 0">
+        <ion-card>
+          <ion-card-content>Não tem produtos no carrinho.</ion-card-content>
+        </ion-card>
+      </ng-container>
+      <ng-container *ngIf="cart.length > 0">
+        <ion-list>
+          <ion-item>
+            <ion-label>
+              <span id="regularPrice" [ngClass]="{ oldPrice: coupon.id }">{{ calculateTotalInCart() }}€</span>
+              <ng-container *ngIf="coupon.id">
+                <span id="discountedPrice" class="txtGreen">{{ ApplyDiscountToCartTotal() }}€</span>
+              </ng-container>
+            </ion-label>
+            <ion-icon name="logo-euro" slot="start"></ion-icon>
+          </ion-item>
+          <ion-item [formGroup]="discountForm">
+            <ion-input
+              type="text"
+              formControlName="discountCode"
+              label="Código promocional"
+              labelPlacement="floating"
+            ></ion-input>
+            <ion-button [disabled]="!discountForm.valid" (click)="validateDiscountCode()">Validar</ion-button>
+          </ion-item>
+          <ng-container *ngIf="coupon.id">
+            <ion-item>
+              <ion-label class="txtGreen">Aplicado desconto de {{ coupon.discountPercentage }}%</ion-label>
+            </ion-item>
+          </ng-container>
+        </ion-list>
+        <ion-button color="danger" expand="block" (click)="removeAllItems()">
+          <ion-icon slot="start" name="trash"></ion-icon>
+          Remover produtos
+        </ion-button>
+        <ion-button color="primary" expand="block" (click)="toggleConcludePurchasing()">Concluir compras</ion-button>
+      </ng-container>
+    </div>
+
+    <div *ngIf="isDonePurchasing">
+      <ion-list>
+        <ion-item-group>
+          <ion-item-divider (click)="toggleConcludePurchasing()">
+            <ion-icon name="arrow-undo-outline"></ion-icon>
+            <ion-label>Voltar</ion-label>
+          </ion-item-divider>
+          <ion-item-divider (click)="toggleConcludePurchasing()">
+            <ion-title>Concluir pagamento:</ion-title>
+          </ion-item-divider>
+          <ion-item-divider>
+            <ion-label>Total a pagar: {{ totalCartValue }}€</ion-label>
+          </ion-item-divider>
+    
+          <ion-item [formGroup]="contactsForm">
+            <ion-input
+              type="text"
+              formControlName="nome"
+              label="Nome"
+              labelPlacement="floating"
+            ></ion-input>
+          </ion-item>
+          <ion-item [formGroup]="contactsForm">
+            <ion-input
+              type="text"
+              formControlName="email"
+              label="Email"
+              labelPlacement="floating"
+            ></ion-input>
+          </ion-item>
+          <ion-item [formGroup]="contactsForm">
+            <ion-input
+              type="text"
+              formControlName="morada"
+              label="Morada"
+              labelPlacement="floating"
+            ></ion-input>
+          </ion-item>
+          <ion-item [formGroup]="contactsForm">
+            <ion-input
+              type="text"
+              formControlName="telefone"
+              label="Telefone"
+              labelPlacement="floating"
+            ></ion-input>
+          </ion-item>
+          <ion-button [disabled]="!contactsForm.valid" color="primary" expand="block" (click)="performPayment()">Fazer pagamento</ion-button>
+
+        </ion-item-group>
+      </ion-list>
+    </div>
+  </ion-list>
+</ion-content>

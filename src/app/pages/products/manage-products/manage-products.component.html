@@ -1,0 +1,49 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-title>Gestão de produtos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" id="main-content">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  @for (item of products; track $index) {
+  <ion-card>
+    <ion-img [src]="item.image"></ion-img>
+    <ion-card-content>
+      <span>{{ item.name }}</span>
+      <span>{{ item.price }}</span>
+      <span>{{ item.isActive }}</span>
+
+      <div class="btnOptions-Group">
+        <ion-icon
+          name="create-outline"
+          routerLink="/editar-produto/{{ item.id }}"
+        ></ion-icon>
+        <ion-icon
+          name="trash-outline"
+          (click)="deleteProduct(item.id)"
+        ></ion-icon>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  }
+
+  <ion-fab slot="fixed" vertical="center" horizontal="start">
+    <ion-fab-button routerLink="/criar-produto">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data..."
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

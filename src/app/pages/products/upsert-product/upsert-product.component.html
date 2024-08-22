@@ -1,0 +1,72 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ pageTitle }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" id="main-content">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title>{{ pageTitle }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <form [formGroup]="criarForm" (submit)="handleFormSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-input
+          formControlName="name"
+          label="name"
+          labelPlacement="floating"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-textarea
+          formControlName="description"
+          label="description"
+          row="5"
+          labelPlacement="floating"
+        ></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          type="number"
+          formControlName="price"
+          label="price"
+          labelPlacement="floating"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <!--         <ion-input
+          formControlName="image"
+          label="image"
+          labelPlacement="floating"
+        ></ion-input> -->
+        <ion-label>Imagem</ion-label>
+        <ion-button (click)="openCamera()" slot="end" size="small"
+          >Selecionar uma imagem</ion-button
+        >
+
+        <div>
+          <ion-img [src]="imageUrl"> </ion-img>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-toggle
+          formControlName="isActive"
+          label="isActive"
+          labelPlacement="floating"
+          >isActive</ion-toggle
+        >
+      </ion-item>
+      <ion-item>
+        <ion-button type="submit" slot="end" size="default">{{
+          buttonText
+        }}</ion-button>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

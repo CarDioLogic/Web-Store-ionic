@@ -1,0 +1,48 @@
+.notification-badge {
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  background-color: rgba(248, 0, 0, 0.9);
+  font-size: 0.75rem;
+  padding: 2px;
+  border-radius: 50%;
+  width: 1rem;
+  color: var(--ion-text-color);
+  color: #fff;
+
+  &.ios {
+    top: -2px;
+  }
+}
+
+ion-modal[trigger="cart-modal"] {
+  --width: 75%;
+  --max-width: 512px;
+  justify-content: flex-end;
+}
+
+ion-button {
+  --border-color: black;
+  --padding-top: 5px;
+  --padding-bottom: 5px;
+  --padding-start: 5px;
+  --padding-end: 5px;
+  --border-radius: 50%;
+}
+ion-icon {
+  color: black;
+}
+ion-fab-button {
+  --background: white;
+}
+ion-img{
+    background-color: lightgray;
+    width: 100%;
+    aspect-ratio: 4/3;
+}
+
+.cardContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

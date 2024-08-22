@@ -1,0 +1,28 @@
+ion-card {
+  display: flex;
+}
+
+ion-ing {
+  width: 126px;
+  height: 126px;
+}
+
+ion-card-content {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+ion-img {
+  width: 100px;
+  height: 100px;
+}
+
+ion-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.btnOptions-group {
+  display: flex;
+}

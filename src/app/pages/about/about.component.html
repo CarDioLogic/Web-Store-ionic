@@ -1,0 +1,42 @@
+
+<ion-content id="main-content">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Sobre nós</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ aboutUs?.sobreNos }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Os nossos valores</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ aboutUs?.valores }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Contactos</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon name="mail-outline" slot="start"></ion-icon>
+          <ion-label>{{ aboutUs?.contactos?.email }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="call-outline" slot="start"></ion-icon>
+          <ion-label>{{ aboutUs?.contactos?.telefone }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="location-outline" slot="start"></ion-icon>
+          <ion-label>{{ aboutUs?.contactos?.morada }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

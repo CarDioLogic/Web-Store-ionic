@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Lista de encomendas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" id="main-content">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  @for (order of orders; track $index) {
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Encomenda ID: {{order.id}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let produto of order.produtos">
+          <ion-label>
+            Produto Id: {{produto.id}} - Quantidade: {{produto.quantidade}}
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <ion-item>
+        <ion-label >
+          Total: ${{order.valorFinal}}
+        </ion-label>
+        @if(order.cupao){
+          <ion-label slot="end">
+            Cupão: {{order.cupao}}
+          </ion-label>
+        }
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <h2>Detalhes de contacto</h2>
+          <p><em>{{order.dadosContato.nome}}</em></p>
+          <p><ion-icon name="home-outline"></ion-icon> {{order.dadosContato.email}}</p>
+          <p><ion-icon name="mail-outline"></ion-icon> {{order.dadosContato.morada}}</p>
+          <p><ion-icon name="call-outline"></ion-icon> {{order.dadosContato.telefone}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  }
+
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data..."
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
